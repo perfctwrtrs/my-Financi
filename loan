@@ -1,0 +1,64 @@
+class Loan:
+    def __init__(self, client_name, passbook_number, physical_address, amount_applied_for, guarantors, security, source_of_income, purpose_of_loan, loan_period, loan_type):
+        self.client_name = client_name
+        self.passbook_number = passbook_number
+        self.physical_address = physical_address
+        self.amount_applied_for = amount_applied_for
+        self.guarantors = guarantors
+        self.security = security
+        self.source_of_income = source_of_income
+        self.purpose_of_loan = purpose_of_loan
+        self.loan_period = loan_period
+        self.loan_type = loan_type
+
+    def display_loan_details(self):
+        print(f"Client Name: {self.client_name}")
+        print(f"Passbook Number: {self.passbook_number}")
+        print(f"Physical Address: {self.physical_address}")
+        print(f"Amount Applied For: {self.amount_applied_for}")
+        print(f"Guarantors: {self.guarantors}")
+        print(f"Security: {self.security}")
+        print(f"Source of Income: {self.source_of_income}")
+        print(f"Purpose of Loan: {self.purpose_of_loan}")
+        print(f"Loan Period: {self.loan_period}")
+        print(f"Loan Type: {self.loan_type}")
+
+
+class LoanManagementSystem:
+    def __init__(self):
+        self.loans = []
+
+    def apply_for_loan(self, client_name, passbook_number, physical_address, amount_applied_for, guarantors, security, source_of_income, purpose_of_loan, loan_period, loan_type):
+        new_loan = Loan(client_name, passbook_number, physical_address, amount_applied_for, guarantors, security, source_of_income, purpose_of_loan, loan_period, loan_type)
+        self.loans.append(new_loan)
+        print("Loan application submitted successfully!")
+
+    def display_all_loans(self):
+        if not self.loans:
+            print("No loans have been applied for.")
+            return
+        for loan in self.loans:
+            loan.display_loan_details()
+            print("-" * 30)
+
+
+# Example usage
+if __name__ == "__main__":
+    lms = LoanManagementSystem()
+    
+    # Applying for a loan
+    lms.apply_for_loan(
+        client_name="John Doe",
+        passbook_number="123456789",
+        physical_address="123 Main St, Springfield",
+        amount_applied_for=5000,
+        guarantors="Jane Smith",
+        security="Property",
+        source_of_income="Salary",
+        purpose_of_loan="Business Expansion",
+        loan_period="12 months",
+        loan_type="BUSINESS LOAN"
+    )
+
+    # Display all loans
+    lms.display_all_loans()
